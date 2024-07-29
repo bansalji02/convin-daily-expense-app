@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 
+//this is the middleware, which will be used to authenticate the user.
 export default (req, res, next) => {
   const token = req.header('Authorization').replace('Bearer ', '');
   if (!token) {

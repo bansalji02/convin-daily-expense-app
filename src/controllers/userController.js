@@ -4,6 +4,15 @@ import  jwt from 'jsonwebtoken';
 
 import { validateUser } from '../utils/validation.js';
 
+
+
+// Create a new user. Demo request body is:
+// {
+//   "name": "naitik Bansal",
+//   "email": "bansal.naitik@gmail.com",
+//   "mobileNumber": "8798108933",
+//   "password": "bansal123"
+// }
 export const createUser = async (req, res) => {
   try {
     const { error } = validateUser(req.body);
@@ -32,6 +41,11 @@ export const createUser = async (req, res) => {
 };
 
 
+//Function to login a user. Demo request body is:
+// {
+//   "email": "bansal.naitik@gmail.com",
+//   "password": "bansal123"
+// }
 export const login= async(req, res) =>{
   try {
     const { email, password } = req.body;
@@ -47,6 +61,11 @@ export const login= async(req, res) =>{
   }
 }
 
+
+//Function to get user details. Demo request is empty.
+// GET /user/:id
+// Here, :id is the id of the user whose details you want to get.
+// For example, GET /user/60c4a4b6b4b3e30015f1f2d7
 
 export const getUserDetails = async (req, res) => {
   try {

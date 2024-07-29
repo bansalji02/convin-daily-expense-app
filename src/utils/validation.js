@@ -1,4 +1,8 @@
 import Joi from 'joi';
+// Joi is a validation library that can be used to validate the data that is passed to the server.
+//Here we are validating the user and expense data using Joi.   
+
+
 
 export const validateUser = (user) => {
   const schema = Joi.object({

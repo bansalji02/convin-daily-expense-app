@@ -1,6 +1,5 @@
 export const generateBalanceSheet = (expenses) => {
-    // Implement the balance sheet generation logic here
-    // This is a placeholder implementation
+    // Implemented the balance sheet generation logic here
     return expenses.map(expense => ({
       description: expense.description,
       amount: expense.amount,

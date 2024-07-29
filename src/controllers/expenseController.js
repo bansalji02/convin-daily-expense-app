@@ -3,13 +3,33 @@ import User from '../models/User.js';
 import { validateExpense } from '../utils/validation.js';
 import { generateBalanceSheet } from '../utils/balanceSheet.js';
 
+
+
+//Function to add an expense. Demo request body is:
+// {
+//   "description": "Dinner",
+//   "amount": 1000,
+//   "paidBy": "60b9f4b3b3b3b30015f3b3b3",
+//   "participants": [
+//     {
+//       "user": "60b9f4b3b3b3b30015f3b3b3",
+//       "share": 500
+//     },
+//     {
+//       "user": "60b9f4b3b3b3b30015f3b3b4",
+//       "share": 500
+//     }
+//   ],
+//   "splitMethod": "exact"
+// }
 export const addExpense = async (req, res) => {
   try {
     const { error } = validateExpense(req.body);
     if (error) return res.status(400).json({ message: error.details[0].message });
     const { paidBy, participants, amount, splitMethod } = req.body;
 
-
+    //we have used auth middleware, using that we can also verify here if the user is valid or not.
+ 
     
     // Validate shares based on splitMethod
     if (splitMethod === 'equal') {
@@ -93,6 +113,8 @@ export const addExpense = async (req, res) => {
 
 
 
+
+//Function to get all expenses. Demo request is empty.
 export const getUserExpenses = async (req, res) => {
   try {
     const expenses = await Expense.find({ 'participants.user': req.params.userId });
@@ -102,6 +124,8 @@ export const getUserExpenses = async (req, res) => {
   }
 };
 
+
+//Function to get all expenses of all users. Demo request is empty.
 export const getOverallExpenses = async (req, res) => {
   try {
     const expenses = await Expense.find().populate('paidBy', 'name');
@@ -111,6 +135,8 @@ export const getOverallExpenses = async (req, res) => {
   }
 };
 
+
+//Function to download balance sheet. Demo request is empty.
 export const downloadBalanceSheet = async (req, res) => {
   try {
     const expenses = await Expense.find().populate('paidBy', 'name').populate('participants.user', 'name');
@@ -121,6 +147,8 @@ export const downloadBalanceSheet = async (req, res) => {
   }
 };
 
+
+//Function to get user balances. Demo request is empty.
 export const getUserBalances = async (req, res) => {
   try {
     const userId = req.params.userId;

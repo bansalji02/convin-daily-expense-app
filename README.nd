@@ -1,0 +1,36 @@
+# Daily Expense Sharing App
+
+This is the backend system for a daily expense sharing application developed as an assignment given by CONVIN AI.
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+
+## Installation
+
+1. Clone this repo by running the following command in your terminal:
+    ```
+    git clone https://github.com/bansalji02/convin-daily-expense-app.git
+    ```
+
+2. Open the project directory in the terminal and install the dependencies by running the following command:
+    ```
+    npm install
+    ```
+
+3. Create a `.env` file in the root of the project and paste the following values in it. Make sure to replace the mongo uri
+with your own mongodb uri string:
+    ```
+    PORT=3000
+    MONGO_URI=mongodb+srv://<your-mongo-username>:<your-mongo-pswd>@himanshu-cluster.i6xmnts.mongodb.net/Covin_DB
+    JWT_SECRET=<ANY STRING>
+    ```
+
+## Usage
+
+To run this project, open the project directory in the terminal and execute the following command:
+
+```
+npm run dev
+```

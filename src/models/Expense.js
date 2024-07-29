@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 
+// Expense Schema
 const expenseSchema = new mongoose.Schema({
   description: {
     type: String,
