@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
 
-
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -23,6 +22,20 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  lends: [{
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+    },
+    amount: Number,
+  }],
+  debts: [{
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+    },
+    amount: Number,
+  }],
 });
 
 export default mongoose.model('User', userSchema);

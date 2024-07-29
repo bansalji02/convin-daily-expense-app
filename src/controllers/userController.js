@@ -1,5 +1,7 @@
 import User from '../models/User.js';
 import bcrypt from 'bcryptjs';
+import  jwt from 'jsonwebtoken';
+
 import { validateUser } from '../utils/validation.js';
 
 export const createUser = async (req, res) => {
@@ -28,6 +30,23 @@ export const createUser = async (req, res) => {
     res.status(500).json({ message: 'Error creating user', error: error.message });
   }
 };
+
+
+export const login= async(req, res) =>{
+  try {
+    const { email, password } = req.body;
+    const user = await User.findOne({ email });
+    
+    if (!user || !(await bcrypt.compare(password, user.password))) {
+      return res.status(401).send('Invalid credentials');
+    }
+    const token = jwt.sign({ userId: user._id, fullName: user.name }, process.env.JWT_SECRET);
+    res.send({ token });
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+}
+
 
 export const getUserDetails = async (req, res) => {
   try {

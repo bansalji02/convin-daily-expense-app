@@ -20,7 +20,7 @@ export const validateExpense = (expense) => {
     participants: Joi.array().items(
       Joi.object({
         user: Joi.string().required(),
-        share: Joi.number().required(),
+        share: Joi.number(),
       })
     ).required(),
   });

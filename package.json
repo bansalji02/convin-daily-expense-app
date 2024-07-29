@@ -1,5 +1,5 @@
 {
-"name": "daily-expenses-sharing",
+  "name": "daily-expenses-sharing",
   "version": "1.0.0",
   "description": "Backend for Daily Expenses Sharing Application",
   "main": "src/app.js",
